@@ -1,0 +1,23 @@
+?start: expr
+
+?expr: sum
+
+?sum: product
+    | sum "+" product   -> add
+    | sum "-" product   -> sub
+
+?product: value
+    | product "*" value  -> mul
+    | product "/" value  -> div
+
+?value: NUMBER           -> number
+     | "-" value         -> neg
+     | NUMBER NAME       -> quantity
+     | NAME              -> symbol
+     | "(" expr")"
+
+%import common.CNAME -> NAME
+%import common.NUMBER
+%import common.WS_INLINE
+
+%ignore WS_INLINE

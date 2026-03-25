@@ -1,0 +1,5 @@
+[duration]
+description = "A temporal duration."
+
+[distance]
+description = "A physical distance or length."

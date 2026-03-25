@@ -1,0 +1,36 @@
+[second]
+dimension = "duration"
+forms = ["h", "hour", "hours"]
+transform.path = "datetime.timedelta"
+transform.params.hours = { "variable" = true }
+
+[minute]
+dimension = "duration"
+forms = ["s", "sec", "second", "seconds"]
+transform.path = "datetime.timedelta"
+transform.params.seconds = { "variable" = true }
+
+[hour]
+dimension = "duration"
+forms = ["h", "hour", "hours"]
+transform.path = "datetime.timedelta"
+transform.params.hours = { "variable" = true }
+
+[day]
+dimension = "duration"
+forms = ["d", "day", "days"]
+transform.path = "datetime.timedelta"
+transform.params.days = { "variable" = true }
+
+[week]
+dimension = "duration"
+forms = ["week", "weeks"]
+transform.path = "datetime.timedelta"
+transform.params.weeks = { "variable" = true }
+
+[month]
+dimension = "duration"
+forms = ["month", "months"]
+transform.path = "datetime.timedelta"
+transform.params.months = { "variable" = true }
+
