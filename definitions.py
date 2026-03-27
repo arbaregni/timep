@@ -103,7 +103,12 @@ class Definitions:
             dim_name = props.get('dimension')
             if dim_name not in self.dimensions:
                 logger.warning(f'Unit dimension "{dim_name}" does not exist')
-                continue
+                self.dimensions[dim_name] = Dimension(
+                    name=dim_name,
+                    units=[],
+                    description=f'Auto generated dimension to contain unit {name}'
+                )
+
 
             dim = self.dimensions[dim_name]
             forms = props.get('forms')
@@ -126,5 +131,21 @@ class Definitions:
             for form in unit.forms:
                 self.form_to_units[form].append(unit)
 
-    def lookup_form(self, name):
-        return self.form_to_units[name]
+    def lookup_form(self, form):
+        """
+        lookup the form as it appears, returning all possible forms (or none if not found
+        """
+        return self.form_to_units[form]
+
+    def get_symbol(self, form):
+        """
+        lookup symbol name, raising a ValueError on issue
+        """
+        match self.lookup_form(form):
+            case [symbol]:
+                return symbol
+            case []:
+                raise ValueError(f'No symbol found associated with form: "{form}"')
+            case symbols:
+                raise ValueError(f'Ambiguous symbol found: "{form}" could refer to one of: {symbols}')
+

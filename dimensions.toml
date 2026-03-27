@@ -1,5 +1,9 @@
 [duration]
 description = "A temporal duration."
 
+[timestamp]
+description = "A timestamp."
+
 [distance]
 description = "A physical distance or length."
+

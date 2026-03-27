@@ -30,18 +30,13 @@ class EvaluationTree(lark.Transformer):
     def __init__(self, defs: Definitions):
         self.defs = defs
 
-    def symbol(self, name):
-        match self.defs.lookup_form(name):
-            case [symbol]:
-                return symbol
-            case []:
-                raise ValueError(f'No symbol found associated with name: "{name}"')
-            case symbols:
-                raise ValueError(f'Ambiguous symbol found: "{name}" could refer to one of: {symbols}')
+    def symbol(self, form):
+        symbol = self.defs.get_symbol(form)
+        return symbol.transform_value(None)
 
-    def quantity(self, num, unit):
-        num = self.number(num)
-        unit = self.symbol(unit)
+    def quantity(self, num_form, unit_form):
+        num = self.number(num_form)
+        unit = self.defs.get_symbol(unit_form)
         return unit.transform_value(num)
 
 

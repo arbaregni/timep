@@ -34,3 +34,15 @@ forms = ["month", "months"]
 transform.path = "datetime.timedelta"
 transform.params.months = { "variable" = true }
 
+[now]
+dimension = "timestamp"
+forms = ["now"]
+transform.path = "datetime.datetime.now"
+transform.params = {}
+
+[today]
+dimension = "timestamp"
+forms = ["today"]
+transform.path = "datetime.datetime.today"
+transform.params = {}
+
