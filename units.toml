@@ -1,14 +1,14 @@
 [second]
 dimension = "duration"
-forms = ["h", "hour", "hours"]
-transform.path = "datetime.timedelta"
-transform.params.hours = { "variable" = true }
-
-[minute]
-dimension = "duration"
 forms = ["s", "sec", "second", "seconds"]
 transform.path = "datetime.timedelta"
 transform.params.seconds = { "variable" = true }
+
+[minute]
+dimension = "duration"
+forms = ["min", "minute", "minutes"]
+transform.path = "datetime.timedelta"
+transform.params.minutes = { "variable" = true }
 
 [hour]
 dimension = "duration"
